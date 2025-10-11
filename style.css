@@ -999,6 +999,7 @@ section {
   align-items: flex-start;
   gap: 2rem;
   min-height: 80px;
+  padding-top: 3rem; /* timeline-yearのスペースを確保 */
 }
 
 .timeline-item:nth-child(odd) {
@@ -1018,7 +1019,10 @@ section {
   padding: 1rem 1.5rem;
   border-radius: 8px;
   border: 1px solid var(--primary-purple);
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
   z-index: 3; /* 中央線より上に配置 */
   min-width: 120px;
   text-align: center;
@@ -1036,6 +1040,11 @@ section {
   position: relative;
   z-index: 2; /* 中央線より上に配置 */
   margin-top: 1rem;
+}
+
+/* timeline-yearがないアイテムはパディングを調整 */
+.timeline-item.no-year {
+  padding-top: 1rem;
 }
 
 .timeline-content::before {
