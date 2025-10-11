@@ -1015,7 +1015,7 @@ section {
   font-size: 1.2rem;
   font-weight: 900;
   color: var(--primary-purple);
-  background: rgba(139, 92, 246, 0.1);
+  background: var(--bg-primary); /* 背景を不透明にして中央線を隠す */
   padding: 1rem 1.5rem;
   border-radius: 8px;
   border: 1px solid var(--primary-purple);
@@ -1023,10 +1023,11 @@ section {
   left: 50%;
   top: 0;
   transform: translateX(-50%);
-  z-index: 3; /* 中央線より上に配置 */
+  z-index: 4; /* 中央線より上に配置 */
   min-width: 120px;
   text-align: center;
-  box-shadow: var(--glow-purple);
+  /* 中央線を完全に隠すためのスタイル */
+  box-shadow: var(--glow-purple), 0 0 0 4px var(--bg-primary);
 }
 
 .timeline-content {
