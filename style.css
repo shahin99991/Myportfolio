@@ -981,7 +981,7 @@ section {
   position: absolute;
   left: 50%;
   top: 0;
-  bottom: 0;
+  bottom: -100px; /* タイムラインの最後まで線を伸ばす */
   width: 2px;
   background: linear-gradient(
     to bottom,
@@ -989,6 +989,7 @@ section {
     var(--neon-purple)
   );
   transform: translateX(-50%);
+  z-index: 1;
 }
 
 .timeline-item {
@@ -1017,7 +1018,7 @@ section {
   border-radius: 8px;
   border: 1px solid var(--primary-purple);
   position: relative;
-  z-index: 2;
+  z-index: 3; /* 中央線より上に配置 */
   min-width: 120px;
   text-align: center;
   box-shadow: var(--glow-purple);
@@ -1032,6 +1033,7 @@ section {
   max-width: 400px;
   transition: var(--transition-smooth);
   position: relative;
+  z-index: 2; /* 中央線より上に配置 */
 }
 
 .timeline-content::before {
@@ -1633,6 +1635,7 @@ section {
   /* Experience Timeline Mobile */
   .experience-timeline::before {
     left: 2rem;
+    bottom: -50px; /* モバイルでも線を最後まで伸ばす */
   }
 
   .timeline-item {
