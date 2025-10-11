@@ -981,7 +981,7 @@ section {
   position: absolute;
   left: 50%;
   top: 0;
-  bottom: -100px; /* タイムラインの最後まで線を伸ばす */
+  bottom: -50px; /* タイムラインの最後まで線を伸ばす */
   width: 2px;
   background: linear-gradient(
     to bottom,
@@ -996,8 +996,9 @@ section {
   position: relative;
   margin-bottom: 3rem;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 2rem;
+  min-height: 80px;
 }
 
 .timeline-item:nth-child(odd) {
@@ -1034,6 +1035,7 @@ section {
   transition: var(--transition-smooth);
   position: relative;
   z-index: 2; /* 中央線より上に配置 */
+  margin-top: 1rem;
 }
 
 .timeline-content::before {
