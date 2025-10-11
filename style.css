@@ -989,7 +989,7 @@ section {
     var(--neon-purple)
   );
   transform: translateX(-50%);
-  z-index: 1;
+  z-index: 0; /* timeline-yearより下に配置 */
 }
 
 .timeline-item {
@@ -1015,7 +1015,7 @@ section {
   font-size: 1.2rem;
   font-weight: 900;
   color: var(--primary-purple);
-  background: var(--bg-primary); /* 背景を不透明にして中央線を隠す */
+  background: var(--bg-primary);
   padding: 1rem 1.5rem;
   border-radius: 8px;
   border: 1px solid var(--primary-purple);
@@ -1023,11 +1023,13 @@ section {
   left: 50%;
   top: 0;
   transform: translateX(-50%);
-  z-index: 4; /* 中央線より上に配置 */
+  z-index: 5;
   min-width: 120px;
   text-align: center;
-  /* 中央線を完全に隠すためのスタイル */
-  box-shadow: var(--glow-purple), 0 0 0 4px var(--bg-primary);
+  box-shadow: var(--glow-purple);
+  /* 中央線を完全に隠すための大きな背景 */
+  box-shadow: var(--glow-purple), 0 0 0 8px var(--bg-primary),
+    0 0 0 10px rgba(139, 92, 246, 0.3);
 }
 
 .timeline-content {
