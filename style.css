@@ -627,6 +627,20 @@ section {
   border-radius: 50%;
   object-fit: cover;
   display: block;
+  object-position: center center;
+  transform: scale(0.85); /* 少しズームアウトして見せる */
+}
+
+@media (max-width: 768px) {
+  .avatar-image {
+    transform: scale(0.9); /* モバイルではやや大きめに */
+  }
+}
+
+@media (max-width: 480px) {
+  .avatar-image {
+    transform: scale(0.92);
+  }
 }
 
 .avatar-initial {
