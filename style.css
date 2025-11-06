@@ -609,8 +609,8 @@ section {
 }
 
 .sphere-inner {
-  width: 150px;
-  height: 150px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   background: linear-gradient(45deg, var(--primary-purple), var(--neon-purple));
   display: flex;
@@ -1807,8 +1807,8 @@ section {
   }
 
   .sphere-inner {
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
   }
 
   .avatar-initial {
@@ -1987,8 +1987,8 @@ section {
   }
 
   .sphere-inner {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
   }
 
   .avatar-initial {
