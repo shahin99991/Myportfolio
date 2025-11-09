@@ -2142,3 +2142,54 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
+
+/* Hero Affiliations Styles */
+.hero-affiliations {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(139, 92, 246, 0.1);
+    border-radius: 8px;
+    border: 1px solid var(--primary-purple);
+}
+
+.affiliation-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.affiliation-label {
+    color: var(--text-secondary);
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.affiliation-value {
+    display: flex;
+    gap: 1rem;
+}
+
+.affiliation-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(139, 92, 246, 0.2);
+    border-radius: 4px;
+    font-family: var(--font-primary);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: var(--transition-smooth);
+}
+
+.affiliation-badge:hover {
+    background: rgba(139, 92, 246, 0.3);
+    transform: translateY(-2px);
+    box-shadow: var(--glow-purple);
+}
+
+.affiliation-badge i {
+    color: var(--primary-purple);
+}
