@@ -119,12 +119,12 @@
 
 :root {
   /* Purple Digital Theme Colors */
-  --primary-purple: #8b5cf6;
-  --secondary-purple: #a855f7;
-  --dark-purple: #6d28d9;
-  --light-purple: #c4b5fd;
-  --neon-purple: #d946ef;
-  --cyber-purple: #9333ea;
+  --primary-purple: #38b6ff; /* Azure Blue */
+  --secondary-purple: #5f8fff; /* Azure Light Blue */
+  --dark-purple: #1e2a47; /* Azure Dark Blue */
+  --light-purple: #b3e0ff; /* Azure Lightest */
+  --neon-purple: #00c3ff; /* Neon Azure */
+  --cyber-purple: #3a8dde; /* Cyber Azure */
 
   /* Background Colors */
   --bg-primary: #0a0a0f;
@@ -137,8 +137,8 @@
   --text-accent: #f8fafc;
 
   /* Effects */
-  --glow-purple: 0 0 20px rgba(139, 92, 246, 0.5);
-  --glow-neon: 0 0 30px rgba(217, 70, 239, 0.7);
+  --glow-purple: 0 0 20px rgba(56, 182, 255, 0.5);
+  --glow-neon: 0 0 30px rgba(0, 195, 255, 0.7);
   --blur-bg: rgba(10, 10, 15, 0.8);
 
   /* Fonts */
