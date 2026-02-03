@@ -1,3 +1,16 @@
+/* ====== Footer BGM Info ====== */
+.site-footer {
+  width: 100%;
+  text-align: center;
+  padding: 8px 0 4px 0;
+  background: transparent;
+}
+.bgm-info {
+  font-size: 0.85rem;
+  color: var(--accent-cyan, #6ee7ff);
+  opacity: 0.7;
+  letter-spacing: 0.05em;
+}
 .badge-row-skills {
   display: flex;
   gap: 2.5rem;
