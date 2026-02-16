@@ -36,6 +36,18 @@
 .badge-row-skills {
   margin: 3.5rem auto 0 auto;
 }
+@media (max-width: 600px) {
+  .badge-row-skills {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  .cert-badge-img-skills {
+    width: 80px;
+    height: auto;
+    margin-bottom: 8px;
+  }
+}
 .badge-row-large {
   display: flex;
   gap: 2.5rem;
