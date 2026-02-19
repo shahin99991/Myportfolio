@@ -1,3 +1,36 @@
+/* ====== Snowflake Effect ====== */
+.snowflake-effect {
+  pointer-events: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  overflow: visible;
+}
+.snowflake-svg {
+  position: absolute;
+  will-change: transform, opacity;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 8px #b3e0ffcc);
+}
+@keyframes snowflake-fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg) scale(1.1);
+    opacity: 0;
+  }
+}
 /* ====== Footer BGM Info ====== */
 .site-footer {
   width: 100%;
