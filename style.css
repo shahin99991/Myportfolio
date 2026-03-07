@@ -186,9 +186,9 @@
   --cyber-purple: #3a8dde; /* Cyber Azure */
 
   /* Background Colors */
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #1a1a2e;
-  --bg-tertiary: #16213e;
+  --bg-primary: #0d1b2a;
+  --bg-secondary: #1b2d45;
+  --bg-tertiary: #1e3a5f;
 
   /* Text Colors */
   --text-primary: #ffffff;
@@ -198,7 +198,7 @@
   /* Effects */
   --glow-purple: 0 0 20px rgba(56, 182, 255, 0.5);
   --glow-neon: 0 0 30px rgba(0, 195, 255, 0.7);
-  --blur-bg: rgba(10, 10, 15, 0.8);
+  --blur-bg: rgba(13, 27, 42, 0.75);
 
   /* Fonts */
   --font-primary: "Orbitron", monospace;

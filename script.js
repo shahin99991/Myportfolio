@@ -59,7 +59,7 @@ function startCMatrix() {
     const drops = Array(columns).fill(1);
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     function draw() {
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
+        ctx.fillStyle = 'rgba(13, 27, 42, 0.18)';
         ctx.fillRect(0, 0, width, height);
         ctx.font = fontSize + 'px monospace';
         ctx.fillStyle = '#00ff41';
