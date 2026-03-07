@@ -21,8 +21,11 @@ function spawnSakura() {
     svg.style.left = `${Math.random() * 98}vw`;
     svg.style.top = `-${8 + Math.random() * 8}vh`;
     svg.style.opacity = 0.75 + Math.random() * 0.25;
-    // ひらりひらりとした揺れを duration と sway 量で個性付け
-    const duration = 5 + Math.random() * 4;
+    // スマホ縦画面では画面が長いので落下時間を長くする
+    const isPortraitMobile = window.innerHeight > window.innerWidth && window.innerWidth < 768;
+    const baseDuration = isPortraitMobile ? 9 : 5;
+    const rangeDuration = isPortraitMobile ? 6 : 4;
+    const duration = baseDuration + Math.random() * rangeDuration;
     svg.style.animation = `sakura-fall ${duration}s ease-in-out forwards`;
     svg.style.animationDelay = `${Math.random() * 1.5}s`;
     svg.style.transform = `rotate(${Math.random() * 360}deg)`;
