@@ -1468,7 +1468,7 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.8rem 1.5rem;
+  padding: 0.8rem 1.2rem;
   background: transparent;
   color: var(--primary-purple);
   text-decoration: none;
@@ -1479,6 +1479,11 @@ section {
   transition: var(--transition-smooth);
   position: relative;
   z-index: 2;
+  max-width: 100%;
+  box-sizing: border-box;
+  word-break: break-all;
+  white-space: normal;
+  font-size: 0.85rem;
 }
 
 .contact-link:hover {
