@@ -1,45 +1,45 @@
-// ====== Snowflake Effect ======
-function spawnSnowflake() {
-    const container = document.querySelector('.snowflake-effect');
+// ====== Sakura Effect ======
+const sakuraPinks = ['#ffb7c5', '#ff8fab', '#fce4ec', '#f48fb1', '#ff80ab'];
+
+function spawnSakura() {
+    const container = document.querySelector('.sakura-effect');
     if (!container) return;
-    const snowflakeSVG = `<svg class="snowflake-svg" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g stroke="#b3e0ff" stroke-width="2">
-            <line x1="20" y1="2" x2="20" y2="38"/>
-            <line x1="2" y1="20" x2="38" y2="20"/>
-            <line x1="7" y1="7" x2="33" y2="33"/>
-            <line x1="33" y1="7" x2="7" y2="33"/>
-            <line x1="10" y1="20" x2="30" y2="20" stroke-width="1"/>
-            <line x1="20" y1="10" x2="20" y2="30" stroke-width="1"/>
-        </g>
+    const pink = sakuraPinks[Math.floor(Math.random() * sakuraPinks.length)];
+    const pinkDark = sakuraPinks[Math.floor(Math.random() * sakuraPinks.length)];
+    const petalSVG = `<svg class="sakura-petal" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="20" cy="22" rx="7" ry="12" fill="${pink}" opacity="0.92" transform="rotate(-20 20 22)"/>
+        <ellipse cx="20" cy="22" rx="7" ry="12" fill="${pinkDark}" opacity="0.65" transform="rotate(20 20 22)"/>
+        <ellipse cx="20" cy="26" rx="3" ry="5" fill="#fff" opacity="0.3" transform="rotate(-5 20 26)"/>
     </svg>`;
     const el = document.createElement('div');
-    el.innerHTML = snowflakeSVG;
+    el.innerHTML = petalSVG;
     const svg = el.firstChild;
-    svg.classList.add('snowflake-svg');
-    const size = 24 + Math.random() * 32;
+    svg.classList.add('sakura-petal');
+    const size = 18 + Math.random() * 22;
     svg.style.width = `${size}px`;
     svg.style.height = `${size}px`;
-    svg.style.left = `${Math.random() * 96}vw`;
-    svg.style.top = `-${10 + Math.random() * 10}vh`;
-    svg.style.opacity = 0.7 + Math.random() * 0.3;
-    svg.style.animation = `snowflake-fall ${3.5 + Math.random() * 2.5}s linear forwards`;
-    svg.style.animationDelay = `${Math.random() * 1.2}s`;
+    svg.style.left = `${Math.random() * 98}vw`;
+    svg.style.top = `-${8 + Math.random() * 8}vh`;
+    svg.style.opacity = 0.75 + Math.random() * 0.25;
+    // ひらりひらりとした揺れを duration と sway 量で個性付け
+    const duration = 5 + Math.random() * 4;
+    svg.style.animation = `sakura-fall ${duration}s ease-in-out forwards`;
+    svg.style.animationDelay = `${Math.random() * 1.5}s`;
     svg.style.transform = `rotate(${Math.random() * 360}deg)`;
     container.appendChild(svg);
     svg.addEventListener('animationend', () => svg.remove());
 }
 
-function launchSnowflakeEffect() {
-    // 初回に複数個を一気に降らせる
-    for (let i = 0; i < 18; i++) {
-        setTimeout(spawnSnowflake, i * 120);
+function launchSakuraEffect() {
+    // 初回に複数枚まとめて降らせる
+    for (let i = 0; i < 20; i++) {
+        setTimeout(spawnSakura, i * 150);
     }
     // 以降は一定間隔で降らせ続ける
     setInterval(() => {
-        for (let i = 0; i < 2; i++) {
-            setTimeout(spawnSnowflake, i * 300);
-        }
-    }, 900);
+        spawnSakura();
+        setTimeout(spawnSakura, 400);
+    }, 1000);
 }
 
 // cmatrix background effect
@@ -135,8 +135,8 @@ function hideLoadingScreen() {
         setupAudio();
         // Launch snowflake effect after loading
         setTimeout(() => {
-            if (typeof launchSnowflakeEffect === 'function') {
-                launchSnowflakeEffect();
+            if (typeof launchSakuraEffect === 'function') {
+                launchSakuraEffect();
             }
         }, 1200);
     }, 1000);
