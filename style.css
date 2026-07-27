@@ -1,5 +1,5 @@
-/* ====== Sakura Effect ====== */
-.sakura-effect {
+/* ====== Summer Bubble Effect ====== */
+.bubble-effect {
   pointer-events: none;
   position: fixed;
   left: 0;
@@ -9,20 +9,38 @@
   z-index: 10;
   overflow: visible;
 }
-.sakura-petal {
+.bubble-particle {
   position: absolute;
   will-change: transform, opacity;
-  opacity: 0.9;
-  filter: drop-shadow(0 0 6px #ffb7c5aa);
+  opacity: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(186, 230, 253, 0.75);
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.82) 0 16%, rgba(255, 255, 255, 0) 38%),
+    radial-gradient(circle at 58% 62%, rgba(125, 211, 252, 0.18) 0 58%, rgba(125, 211, 252, 0.03) 74%, rgba(125, 211, 252, 0) 100%);
+  box-shadow:
+    inset -3px -4px 8px rgba(15, 23, 42, 0.18),
+    0 0 12px rgba(125, 211, 252, 0.26);
+  animation: bubble-drift linear forwards;
 }
-@keyframes sakura-fall {
-  0%   { transform: translate(0px, -10vh) rotate(0deg);   opacity: 0; }
-  8%   { opacity: 0.9; }
-  25%  { transform: translate(60px, 25vh)  rotate(80deg); }
-  50%  { transform: translate(-50px, 55vh) rotate(170deg); }
-  75%  { transform: translate(40px, 80vh)  rotate(260deg); }
-  92%  { opacity: 0.7; }
-  100% { transform: translate(-30px, 112vh) rotate(360deg); opacity: 0; }
+@keyframes bubble-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.86);
+    opacity: 0;
+  }
+  12% {
+    opacity: var(--bubble-opacity, 0.8);
+  }
+  46% {
+    transform: translate3d(calc(var(--bubble-drift-x) * 0.55), calc(var(--bubble-travel-y) * 0.5), 0) scale(1);
+  }
+  85% {
+    opacity: calc(var(--bubble-opacity, 0.8) * 0.78);
+  }
+  100% {
+    transform: translate3d(var(--bubble-drift-x), var(--bubble-travel-y), 0) scale(1.08);
+    opacity: 0;
+  }
 }
 /* ====== Footer BGM Info ====== */
 .site-footer {

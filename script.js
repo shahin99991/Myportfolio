@@ -1,48 +1,45 @@
-// ====== Sakura Effect ======
-const sakuraPinks = ['#ffb7c5', '#ff8fab', '#fce4ec', '#f48fb1', '#ff80ab'];
-
-function spawnSakura() {
-    const container = document.querySelector('.sakura-effect');
+// ====== Summer Bubble Effect ======
+function spawnBubble() {
+    const container = document.querySelector('.bubble-effect');
     if (!container) return;
-    const pink = sakuraPinks[Math.floor(Math.random() * sakuraPinks.length)];
-    const pinkDark = sakuraPinks[Math.floor(Math.random() * sakuraPinks.length)];
-    const petalSVG = `<svg class="sakura-petal" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="20" cy="22" rx="7" ry="12" fill="${pink}" opacity="0.92" transform="rotate(-20 20 22)"/>
-        <ellipse cx="20" cy="22" rx="7" ry="12" fill="${pinkDark}" opacity="0.65" transform="rotate(20 20 22)"/>
-        <ellipse cx="20" cy="26" rx="3" ry="5" fill="#fff" opacity="0.3" transform="rotate(-5 20 26)"/>
-    </svg>`;
-    const el = document.createElement('div');
-    el.innerHTML = petalSVG;
-    const svg = el.firstChild;
-    svg.classList.add('sakura-petal');
-    const size = 18 + Math.random() * 22;
-    svg.style.width = `${size}px`;
-    svg.style.height = `${size}px`;
-    svg.style.left = `${Math.random() * 98}vw`;
-    svg.style.top = `-${8 + Math.random() * 8}vh`;
-    svg.style.opacity = 0.75 + Math.random() * 0.25;
-    // スマホ縦画面では画面が長いので落下時間を長くする
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble-particle';
+    const size = 10 + Math.random() * 30;
+    bubble.style.width = `${size}px`;
+    bubble.style.height = `${size}px`;
+    bubble.style.left = `${Math.random() * 98}vw`;
+
+    const flowDirection = Math.random() < 0.8 ? -1 : 1;
+    const startOffset = flowDirection < 0 ? 102 + Math.random() * 12 : -(8 + Math.random() * 14);
+    bubble.style.top = `${startOffset}vh`;
+
+    const driftX = (Math.random() - 0.5) * (30 + Math.random() * 80);
+    const travelY = flowDirection * (105 + Math.random() * 26);
+    bubble.style.setProperty('--bubble-drift-x', `${driftX}px`);
+    bubble.style.setProperty('--bubble-travel-y', `${travelY}vh`);
+    bubble.style.setProperty('--bubble-opacity', `${(0.45 + Math.random() * 0.45).toFixed(2)}`);
+
+    // スマホ縦画面では画面が長いので移動時間を長くする
     const isPortraitMobile = window.innerHeight > window.innerWidth && window.innerWidth < 768;
-    const baseDuration = isPortraitMobile ? 9 : 5;
-    const rangeDuration = isPortraitMobile ? 6 : 4;
+    const baseDuration = isPortraitMobile ? 12 : 7;
+    const rangeDuration = isPortraitMobile ? 8 : 6;
     const duration = baseDuration + Math.random() * rangeDuration;
-    svg.style.animation = `sakura-fall ${duration}s ease-in-out forwards`;
-    svg.style.animationDelay = `${Math.random() * 1.5}s`;
-    svg.style.transform = `rotate(${Math.random() * 360}deg)`;
-    container.appendChild(svg);
-    svg.addEventListener('animationend', () => svg.remove());
+    bubble.style.animationDuration = `${duration}s`;
+    bubble.style.animationDelay = `${Math.random() * 1.6}s`;
+    container.appendChild(bubble);
+    bubble.addEventListener('animationend', () => bubble.remove());
 }
 
-function launchSakuraEffect() {
-    // 初回に複数枚まとめて降らせる
-    for (let i = 0; i < 20; i++) {
-        setTimeout(spawnSakura, i * 150);
+function launchBubbleEffect() {
+    // 初回にまとまって生成
+    for (let i = 0; i < 22; i++) {
+        setTimeout(spawnBubble, i * 130);
     }
-    // 以降は一定間隔で降らせ続ける
+    // 以降は一定間隔で舞わせ続ける
     setInterval(() => {
-        spawnSakura();
-        setTimeout(spawnSakura, 400);
-    }, 1000);
+        spawnBubble();
+        setTimeout(spawnBubble, 320);
+    }, 820);
 }
 
 // cmatrix background effect
@@ -136,10 +133,10 @@ function hideLoadingScreen() {
         loadingScreen.style.display = 'none';
         initializeAnimations();
         setupAudio();
-        // Launch snowflake effect after loading
+        // Launch summer bubble effect after loading
         setTimeout(() => {
-            if (typeof launchSakuraEffect === 'function') {
-                launchSakuraEffect();
+            if (typeof launchBubbleEffect === 'function') {
+                launchBubbleEffect();
             }
         }, 1200);
     }, 1000);
