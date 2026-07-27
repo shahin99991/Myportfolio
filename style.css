@@ -712,9 +712,9 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 2.2px;
-  width: 20px;
-  height: 20px;
+  gap: 3px;
+  width: 28px;
+  height: 28px;
   flex: 0 0 auto;
 }
 
@@ -2110,9 +2110,9 @@ section {
   }
 
   .microsoft-logo {
-    width: 17px;
-    height: 17px;
-    gap: 1.9px;
+    width: 18px;
+    height: 18px;
+    gap: 2px;
   }
 
   .affiliation-badge-image {
