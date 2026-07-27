@@ -350,6 +350,15 @@ body {
   z-index: -1;
 }
 
+.summer-gif-bg {
+  position: absolute;
+  inset: 0;
+  background: url('dmhjds9-3807f012-95bb-4179-b8e4-16cb1d951525.gif') center center / cover no-repeat;
+  opacity: 0.22;
+  mix-blend-mode: screen;
+  filter: saturate(1.15) contrast(1.05);
+}
+
 .neural-network {
   position: absolute;
   width: 100%;
