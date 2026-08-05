@@ -547,6 +547,20 @@ section {
   opacity: 0.8;
 }
 
+.certification-header {
+  text-align: center;
+  margin: 1rem 0 1.75rem;
+}
+
+.certification-header .section-number {
+  margin-bottom: 0.6rem;
+}
+
+.certification-header .section-title {
+  font-size: 2rem;
+  margin-bottom: 0;
+}
+
 /* Hero Section */
 .hero-section {
   display: flex;
