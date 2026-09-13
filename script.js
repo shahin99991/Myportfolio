@@ -1,47 +1,3 @@
-// ====== Summer Bubble Effect ======
-function spawnBubble() {
-    const container = document.querySelector('.bubble-effect');
-    if (!container) return;
-    const bubble = document.createElement('div');
-    bubble.className = 'bubble-particle';
-    const size = 10 + Math.random() * 30;
-    bubble.style.width = `${size}px`;
-    bubble.style.height = `${size}px`;
-    bubble.style.left = `${Math.random() * 98}vw`;
-
-    const flowDirection = Math.random() < 0.8 ? -1 : 1;
-    const startOffset = flowDirection < 0 ? 102 + Math.random() * 12 : -(8 + Math.random() * 14);
-    bubble.style.top = `${startOffset}vh`;
-
-    const driftX = (Math.random() - 0.5) * (30 + Math.random() * 80);
-    const travelY = flowDirection * (105 + Math.random() * 26);
-    bubble.style.setProperty('--bubble-drift-x', `${driftX}px`);
-    bubble.style.setProperty('--bubble-travel-y', `${travelY}vh`);
-    bubble.style.setProperty('--bubble-opacity', `${(0.45 + Math.random() * 0.45).toFixed(2)}`);
-
-    // スマホ縦画面では画面が長いので移動時間を長くする
-    const isPortraitMobile = window.innerHeight > window.innerWidth && window.innerWidth < 768;
-    const baseDuration = isPortraitMobile ? 12 : 7;
-    const rangeDuration = isPortraitMobile ? 8 : 6;
-    const duration = baseDuration + Math.random() * rangeDuration;
-    bubble.style.animationDuration = `${duration}s`;
-    bubble.style.animationDelay = `${Math.random() * 1.6}s`;
-    container.appendChild(bubble);
-    bubble.addEventListener('animationend', () => bubble.remove());
-}
-
-function launchBubbleEffect() {
-    // 初回にまとまって生成
-    for (let i = 0; i < 22; i++) {
-        setTimeout(spawnBubble, i * 130);
-    }
-    // 以降は一定間隔で舞わせ続ける
-    setInterval(() => {
-        spawnBubble();
-        setTimeout(spawnBubble, 320);
-    }, 820);
-}
-
 // cmatrix background effect
 function startCMatrix() {
     const canvas = document.getElementById('cmatrix-bg');
@@ -133,12 +89,6 @@ function hideLoadingScreen() {
         loadingScreen.style.display = 'none';
         initializeAnimations();
         setupAudio();
-        // Launch summer bubble effect after loading
-        setTimeout(() => {
-            if (typeof launchBubbleEffect === 'function') {
-                launchBubbleEffect();
-            }
-        }, 1200);
     }, 1000);
 }
 
