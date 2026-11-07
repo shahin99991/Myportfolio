@@ -716,9 +716,16 @@ section {
   letter-spacing: 0.18rem;
 }
 
+.affiliation-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
 .affiliation-badge-image {
   display: block;
-  width: clamp(190px, 24vw, 250px);
+  width: clamp(110px, 14vw, 150px);
   height: auto;
   border-radius: 0;
   border: 0;
@@ -2086,7 +2093,7 @@ section {
   }
 
   .affiliation-badge-image {
-    width: min(100%, 240px);
+    width: min(30%, 110px);
   }
 
   .stat-item {
