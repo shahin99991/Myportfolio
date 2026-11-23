@@ -390,9 +390,9 @@ function addHoverEffects() {
 
 // Audio Setup
 function setupAudio() {
-    // Try to autoplay (might be blocked by browser)
     bgm.volume = 0.3;
-    
+    bgm.muted = true;
+
     // Audio visualizer animation
     function animateVisualizer() {
         if (!bgm.paused) {
@@ -404,25 +404,51 @@ function setupAudio() {
         }
         requestAnimationFrame(animateVisualizer);
     }
-    
+
     animateVisualizer();
-    
+
+    const startPlayback = () => {
+        bgm.play().then(() => {
+            // A browser that permits audible autoplay will also allow this unmute.
+            bgm.muted = false;
+            audioToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+        }).catch(() => {
+            // Keep a muted stream running if audible autoplay is blocked.
+            audioToggle.innerHTML = '<i class="fas fa-volume-mute"></i>';
+        });
+    };
+
+    // Start immediately after the loading screen completes.
+    startPlayback();
+
     audioToggle.addEventListener('click', () => {
         if (bgm.paused) {
+            bgm.muted = false;
             bgm.play().catch(e => console.log('Audio play failed:', e));
+            audioToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+        } else if (bgm.muted) {
+            bgm.muted = false;
             audioToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
         } else {
             bgm.pause();
             audioToggle.innerHTML = '<i class="fas fa-volume-mute"></i>';
         }
     });
-    
-    // Try to start audio automatically
-    document.addEventListener('click', () => {
+
+    // Strict autoplay policies are cleared by the first page interaction.
+    const enableAfterInteraction = () => {
+        bgm.muted = false;
         if (bgm.paused) {
-            bgm.play().catch(e => console.log('Audio autoplay failed:', e));
+            bgm.play().then(() => {
+                audioToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+            }).catch(e => console.log('Audio play failed:', e));
+        } else {
+            audioToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
         }
-    }, { once: true });
+    };
+
+    document.addEventListener('pointerdown', enableAfterInteraction, { once: true });
+    document.addEventListener('keydown', enableAfterInteraction, { once: true });
 }
 
 // 3D Tilt Effect
