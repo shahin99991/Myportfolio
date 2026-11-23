@@ -49,10 +49,8 @@ const sections = document.querySelectorAll('section');
 // Loading Screen Animation
 let loadingProgress = 0;
 const loadingSteps = [
-    { progress: 20, status: 'システム初期化中...' },
-    { progress: 40, status: 'ニューラルネットワーク構築中...' },
-    { progress: 60, status: 'ホログラム投影準備中...' },
-    { progress: 80, status: 'デジタル空間生成中...' },
+    { progress: 35, status: 'システム初期化中...' },
+    { progress: 70, status: 'デジタル空間生成中...' },
     { progress: 100, status: '起動完了' }
 ];
 
@@ -64,7 +62,7 @@ function updateLoading() {
         const targetProgress = step.progress;
         
         const progressInterval = setInterval(() => {
-            loadingProgress += 2;
+            loadingProgress += 10;
             loadingFill.style.width = `${loadingProgress}%`;
             loadingPercentage.textContent = `${loadingProgress}%`;
             
@@ -74,12 +72,12 @@ function updateLoading() {
                 currentStep++;
                 
                 if (currentStep < loadingSteps.length) {
-                    setTimeout(updateLoading, 800);
+                    setTimeout(updateLoading, 120);
                 } else {
-                    setTimeout(hideLoadingScreen, 1000);
+                    setTimeout(hideLoadingScreen, 180);
                 }
             }
-        }, 50);
+        }, 20);
     }
 }
 
@@ -89,7 +87,7 @@ function hideLoadingScreen() {
         loadingScreen.style.display = 'none';
         initializeAnimations();
         setupAudio();
-    }, 1000);
+    }, 180);
 }
 
 // Matrix Rain Effect
@@ -618,8 +616,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start loading animation
     updateLoading();
     
-    // Preload audio
-    bgm.load();
+    // Load audio metadata only; playback starts after user interaction
 });
 
 // Handle visibility change (for audio management)

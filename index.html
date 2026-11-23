@@ -11,6 +11,12 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preload" href="summer-bg.jpg" as="image">
+    <link rel="preload" href="avatar.jpg" as="image">
+    <link rel="preload" href="dmhjds9-3807f012-95bb-4179-b8e4-16cb1d951525.gif" as="image">
 </head>
 <body>
     <canvas id="cmatrix-bg"></canvas>
@@ -819,13 +825,12 @@
     </div>
 
     <!-- Audio Element -->
-    <audio id="bgm" loop>
+    <audio id="bgm" loop preload="metadata">
         <source src="BGM.mp3?v=20261001" type="audio/mpeg">
     </audio>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
